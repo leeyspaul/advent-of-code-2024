@@ -61,6 +61,8 @@ func main() {
 	fmt.Printf("Similarity Score: %d\n", calcSimilarityScore(left, right))
 }
 
+// runs in O(NLogN) for the sort, and then N for the calculation of total distance
+// but worst case  is NlogN for sort, in place so O(1) for space
 func calcTotalDistance(left, right []int) int {
 	// sort both slices with builtin go package
 	sort.Ints(left)
@@ -77,7 +79,8 @@ func calcTotalDistance(left, right []int) int {
 	return totalDistance
 }
 
-// Function to calculate similarity score
+// runs in N time and space. N for the map that stores the ints, well N unique i guess
+// and then time is M for running through all of left numbers
 func calcSimilarityScore(left, right []int) int {
 	// create map of frequency of numbers for the list on the right
 	// so we know how many of left item exists in right for left*countOfRight
